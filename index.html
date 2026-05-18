@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Video Call & Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="welcome-card" id="welcome-card">
+      <h1>Private Video Call</h1>
+      <p>Enter a room and start a secure video call with a friend.</p>
+      <div class="field-group">
+        <label for="username">Your Name</label>
+        <input id="username" type="text" placeholder="Alice" required />
+      </div>
+      <div class="field-group">
+        <label for="room-id">Room ID</label>
+        <input id="room-id" type="text" placeholder="room-123" required />
+      </div>
+      <button id="join-btn" class="btn btn-primary">Join Room</button>
+      <p class="help-text">Open the same room ID in another browser tab or share it with a friend.</p>
+    </div>
+
+    <div class="call-container hidden" id="call-container">
+      <header class="top-bar">
+        <div>
+          <span class="status-dot" id="connection-status-dot"></span>
+          <span id="connection-status">Disconnected</span>
+        </div>
+        <div class="room-label">Room: <span id="current-room">-</span></div>
+      </header>
+
+      <section class="video-section">
+        <div class="remote-card">
+          <h2>Remote Video</h2>
+          <video id="remote-video" autoplay playsinline></video>
+          <div class="remote-label" id="remote-label">Waiting for a friend...</div>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="local-card">
+          <h3>Your Camera</h3>
+          <video id="local-video" autoplay muted playsinline></video>
+          <div class="small-label">Local preview</div>
+        </div>
+
+        <div class="chat-card">
+          <div class="chat-header">
+            <h3>Chat</h3>
+            <span id="typing-indicator"></span>
+          </div>
+          <div class="messages" id="messages"></div>
+          <div class="chat-input-row">
+            <input id="message-input" type="text" placeholder="Type a message..." autocomplete="off" />
+            <button id="send-btn" class="btn btn-secondary">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls-row">
+        <button id="toggle-mic" class="btn">Mute</button>
+        <button id="toggle-camera" class="btn">Camera Off</button>
+        <button id="share-screen" class="btn">Share Screen</button>
+        <button id="leave-call" class="btn btn-danger">Leave</button>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
